@@ -109,8 +109,7 @@ int main(){
     const uint8_t leds_usados[13] = {1,2,3,8,6,11,12,13,18,16,21,22,23};
 
     // tela padrão do display OLED
-    ssd1306_draw_string(&ssd, "CARACTERE", 12, 6);
-    ssd1306_rect(&ssd, 2, 92, 14, 14, true, false);
+    ssd1306_rect(&ssd, 2, 46, 14, 14, true, false);
     ssd1306_draw_string(&ssd, "LED AZUL  off", 12, 30);
     ssd1306_draw_string(&ssd, "LED VERDE off", 12, 44);
     ssd1306_send_data(&ssd);
@@ -146,7 +145,7 @@ int main(){
         if (tud_cdc_available()){ 
             c = getchar();
             if ( (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || c == ' '){
-                ssd1306_draw_char(&ssd, c, 95, 5);
+                ssd1306_draw_char(&ssd, c, 49, 5);
                 ssd1306_send_data(&ssd);
 
                 if (c >= '0' && c <= '9'){
