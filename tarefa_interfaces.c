@@ -148,17 +148,21 @@ int main(){
                 ssd1306_draw_char(&ssd, c, 49, 5);
                 ssd1306_send_data(&ssd);
 
-                if (c >= '0' && c <= '9'){
-                    clear_leds();
+                if (c >= '0' && c <= '9') {
+                    clear_leds();  // Apaga antes de desenhar um número
+                
                     uint16_t temp = desenho[c - '0'];
-                    for(uint8_t i = 0; i < 13; i++){
-                        if(temp & 1){
-                        matriz_led[leds_usados[i]].R = 10;
+                    for (uint8_t i = 0; i < 13; i++) {
+                        if (temp & 1) {
+                            matriz_led[leds_usados[i]].R = 10;
                         }
                         temp = temp >> 1;
                     }
-                    print_leds();
-                }
+                    print_leds();  // Atualiza os LEDs com o novo número
+                } else {
+                    clear_leds();  // Se não for um número, apaga os LEDs
+                    print_leds();  // Garante que os LEDs são atualizados corretamente
+                }                
             }
         }
     }
